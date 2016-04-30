@@ -4,50 +4,46 @@
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="http://orangeappletw.github.io/JavaScript-Advanced-textbook/lesson_4/js/fdb-all.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Student's shit</title>
-</head> 
+  <title>JS Bin</title>
+</head>
 <body>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  stuff you should not use
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  
+  <div id="edit-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">change student stuff</h4>
+        <h4 class="modal-title">Modal title</h4>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">student name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" value="Kevin">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Grade</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" value="1">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Someone to talk to</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" value="Kevin's mom">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Phone number</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" value="02-2358-2392">
-          </div>
-        </form>
+        <label>姓名</label>
+        <input type="text" id="studentNameInput"/>
+        <label>年齡</label>
+        <input type="text" id="studentAgeInput"/>
+        <label>電話</label>
+        <input type="text" id="studentPhoneInput"/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="save-changes-button">Save changes</button>
       </div>
-    </div>
-  </div>
-</div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 </body>
 </html>
