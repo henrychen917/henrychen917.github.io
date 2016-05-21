@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="description" content="JSA L9">
+<meta name="description" content="JSA L10">
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -11,13 +12,13 @@
 Created using JS Bin
 http://jsbin.com
 
-Copyright (c) 2016 by henrychen917 (http://jsbin.com/boxova/1/edit)
+Copyright (c) 2016 by kevin-shu (http://jsbin.com/gojufo/7/edit)
 
 Released under the MIT license: http://jsbin.mit-license.org
 -->
 <meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width">
-  <title>My shit</title>
+  <title>JS Bin</title>
 </head>
 <body>
   
@@ -68,6 +69,16 @@ Released under the MIT license: http://jsbin.mit-license.org
         <br>
         <label>班級</label>
         <input type="text" id="studentClassInput"/>
+        <br>
+        <label>家長</label>
+        <select id="studentParentInput"/>
+          <option value="">請選擇家長</option>
+        </select>
+        <br>
+        <label>導師</label>
+        <select id="studentTeacherInput"/>
+          <option value="">請選擇導師</option>
+        </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -81,11 +92,22 @@ Released under the MIT license: http://jsbin.mit-license.org
 var fdb = new ForerunnerDB();
 var db = fdb.db("DB");
 var students = db.collection("students");
+var parents = db.collection("parents");
+var teachers = db.collection("teachers");
 
 var studentId = "";
 
+parents.load(function(){
+  results = parents.find();
+  for(var i=0; i<results.length; i++){
+    $("#studentParentInput").append(
+      "<option value='"+results[i]._id+"'>"+results[i].name+"</option>"
+    );
+  }
+});
+
 students.load(function(){
-students.insert({name:"Kevin",age:Math.floor(Math.random()*30)});
+//   students.insert({name:"Kevin",age:Math.floor(Math.random()*30)});
   students.save();  
   showDataInTable(students.find());
   
@@ -98,6 +120,7 @@ students.insert({name:"Kevin",age:Math.floor(Math.random()*30)});
     $("#studentAgeInput").val(studentData.age);
     $("#studentPhoneInput").val(studentData.phone);
     $("#studentClassInput").val(studentData.class);
+    $("#studentParentInput").val(studentData.parent_id);
     $("#edit-modal").modal("show");
   });
   
@@ -118,7 +141,8 @@ $("#save-changes-button").click(function(){
     name: $("#studentNameInput").val(),
     age: $("#studentAgeInput").val(),
     phone: $("#studentPhoneInput").val(),
-    class: $("#studentClassInput").val()
+    class: $("#studentClassInput").val(),
+    parent_id: $("#studentParentInput").val()
   };
   students.updateById(studentId, newData);
   students.save();
