@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="description" content="JSA L9">
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -10,7 +11,7 @@
 Created using JS Bin
 http://jsbin.com
 
-Copyright (c) 2016 by kevin-shu (http://jsbin.com/sukoxat/16/edit)
+Copyright (c) 2016 by henrychen917 (http://jsbin.com/boxova/1/edit)
 
 Released under the MIT license: http://jsbin.mit-license.org
 -->
@@ -84,7 +85,7 @@ var students = db.collection("students");
 var studentId = "";
 
 students.load(function(){
-//   students.insert({name:"Kevin",age:Math.floor(Math.random()*30)});
+students.insert({name:"Kevin",age:Math.floor(Math.random()*30)});
   students.save();  
   showDataInTable(students.find());
   
